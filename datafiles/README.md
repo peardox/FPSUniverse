@@ -1,3 +1,3 @@
 Models go here in subdirs
 
-These models are not stored in GitHub as the gitignore excludes all subdirs
+Other than World/ these models are not stored in GitHub as the gitignore excludes all other subdirs
