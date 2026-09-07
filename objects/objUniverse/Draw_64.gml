@@ -3,3 +3,4 @@ draw_text(20, 220, "Position : " + string(camera.Position));
 draw_text(20, 240, "Target : " + string(camera.Target));
 draw_text(20, 260, "Forward : " + string(camera.get_forward()));
 draw_text(20, 280, "rotationAngle : " + string(rotationAngle));
+draw_text(20, 300, "Yaw : " + string(objControl.yaw));

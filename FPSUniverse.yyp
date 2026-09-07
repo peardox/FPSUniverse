@@ -154,8 +154,6 @@
     {"$GMIncludedFile":"","%Name":"Material.003_BaseOpacity.png","CopyToMask":-1,"filePath":"datafiles/Sky/Textures","name":"Material.003_BaseOpacity.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"Material.003_MetallicAO.png","CopyToMask":-1,"filePath":"datafiles/Sky/Textures","name":"Material.003_MetallicAO.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"Material.003_NormalRoughness.png","CopyToMask":-1,"filePath":"datafiles/Sky/Textures","name":"Material.003_NormalRoughness.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
-    {"$GMIncludedFile":"","%Name":".gitignore","CopyToMask":-1,"filePath":"datafiles/World","name":".gitignore","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
-    {"$GMIncludedFile":"","%Name":"README.md","CopyToMask":-1,"filePath":"datafiles/World","name":"README.md","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"Material.003_BaseOpacity.png","CopyToMask":-1,"filePath":"datafiles/World/Textures","name":"Material.003_BaseOpacity.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"Material.003_MetallicAO.png","CopyToMask":-1,"filePath":"datafiles/World/Textures","name":"Material.003_MetallicAO.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"Material.003_NormalRoughness.png","CopyToMask":-1,"filePath":"datafiles/World/Textures","name":"Material.003_NormalRoughness.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},

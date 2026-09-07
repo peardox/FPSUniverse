@@ -4,7 +4,7 @@ if(universe.IsLoaded) {
 	if(move == animate.CAMERA) {
 		var _cosa = dcos(rotationAngle);
 		var _sina = dsin(rotationAngle);
-		camera.Target = new BBMOD_Vec3(_sina, _cosa, 0);
+		camera.Target = new BBMOD_Vec3(_sina, _cosa, objControl.yaw);
 		camera.update(delta_time);
 		camera.apply();
 	}

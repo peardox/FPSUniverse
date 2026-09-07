@@ -12,34 +12,34 @@ Timings:
 ========
 [BBMOD Export]
 - Collect export roots: 0.023 ms (0.000023 s)
-- Build object and bone hierarchy: 0.072 ms (0.000072 s)
-- Extract mesh data [Sphere.001]: 291.222 ms (0.291222 s)
-- Extract mesh data total: 291.228 ms (0.291228 s)
+- Build object and bone hierarchy: 0.073 ms (0.000073 s)
+- Extract mesh data [Sphere.001]: 280.453 ms (0.280453 s)
+- Extract mesh data total: 280.458 ms (0.280458 s)
 - Bake node scale into vertices: 0.016 ms (0.000016 s)
-- Build skeleton offsets: 0.067 ms (0.000067 s)
-- Write BBMOD binary: 80.309 ms (0.080309 s)
-- Total BBMOD export: 371.746 ms (0.371746 s)
+- Build skeleton offsets: 0.065 ms (0.000065 s)
+- Write BBMOD binary: 77.860 ms (0.077860 s)
+- Total BBMOD export: 358.523 ms (0.358523 s)
 
 
 Additional Timings:
 ========
 [Export Operator]
-- Export BBMOD model: 372.333 ms (0.372333 s)
-- Export BBMAT materials: 164.489 ms (0.164489 s)
-- Total export operator: 537.181 ms (0.537181 s)
+- Export BBMOD model: 358.874 ms (0.358874 s)
+- Export BBMAT materials: 157.865 ms (0.157865 s)
+- Total export operator: 517.100 ms (0.517100 s)
 
 [BBMAT Per-Material]
-- Material.003: 164.479 ms (0.164479 s)
+- Material.003: 157.855 ms (0.157855 s)
 
 [BBMAT Steps (Totals)]
-- Resolve material inputs: 0.269 ms (0.000269 s)
-- Sample texture sources: 27.276 ms (0.027276 s)
-- Pack texture payloads: 15.085 ms (0.015085 s)
+- Resolve material inputs: 0.233 ms (0.000233 s)
+- Sample texture sources: 25.959 ms (0.025959 s)
+- Pack texture payloads: 14.542 ms (0.014542 s)
 - Direct-copy textures: 0.001 ms (0.000001 s)
-- Deduplicate packed textures: 0.057 ms (0.000057 s)
-- Write packed textures: 78.147 ms (0.078147 s)
-- Write and deduplicate textures: 78.283 ms (0.078283 s)
-- Build BBMAT payload: 163.360 ms (0.163360 s)
-- Write BBMAT JSON: 0.922 ms (0.000922 s)
-- Total BBMAT export: 164.281 ms (0.164281 s)
+- Deduplicate packed textures: 0.055 ms (0.000055 s)
+- Write packed textures: 105.359 ms (0.105359 s)
+- Write and deduplicate textures: 105.484 ms (0.105484 s)
+- Build BBMAT payload: 156.802 ms (0.156802 s)
+- Write BBMAT JSON: 0.861 ms (0.000861 s)
+- Total BBMAT export: 157.663 ms (0.157663 s)
 
