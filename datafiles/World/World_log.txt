@@ -1,0 +1,45 @@
+Nodes:
+======
+0: Sphere.001:
+    * Mesh 0 [V,N,UV,T,]
+
+
+Materials:
+==========
+0: Material.003
+
+Timings:
+========
+[BBMOD Export]
+- Collect export roots: 0.023 ms (0.000023 s)
+- Build object and bone hierarchy: 0.072 ms (0.000072 s)
+- Extract mesh data [Sphere.001]: 291.222 ms (0.291222 s)
+- Extract mesh data total: 291.228 ms (0.291228 s)
+- Bake node scale into vertices: 0.016 ms (0.000016 s)
+- Build skeleton offsets: 0.067 ms (0.000067 s)
+- Write BBMOD binary: 80.309 ms (0.080309 s)
+- Total BBMOD export: 371.746 ms (0.371746 s)
+
+
+Additional Timings:
+========
+[Export Operator]
+- Export BBMOD model: 372.333 ms (0.372333 s)
+- Export BBMAT materials: 164.489 ms (0.164489 s)
+- Total export operator: 537.181 ms (0.537181 s)
+
+[BBMAT Per-Material]
+- Material.003: 164.479 ms (0.164479 s)
+
+[BBMAT Steps (Totals)]
+- Resolve material inputs: 0.269 ms (0.000269 s)
+- Sample texture sources: 27.276 ms (0.027276 s)
+- Pack texture payloads: 15.085 ms (0.015085 s)
+- Direct-copy textures: 0.001 ms (0.000001 s)
+- Deduplicate packed textures: 0.057 ms (0.000057 s)
+- Write packed textures: 78.147 ms (0.078147 s)
+- Write and deduplicate textures: 78.283 ms (0.078283 s)
+- Build BBMAT payload: 163.360 ms (0.163360 s)
+- Write BBMAT JSON: 0.922 ms (0.000922 s)
+- Total BBMAT export: 164.281 ms (0.164281 s)
+
