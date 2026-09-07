@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"funclib",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"funclib",
+  "parent":{
+    "name":"FPSUniverse",
+    "path":"FPSUniverse.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

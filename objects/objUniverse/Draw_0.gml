@@ -1,10 +1,11 @@
 if(universe.IsLoaded) {
 	var _scale = min(room_width / 2, room_height / 2);
 	frame++;
+	rotationAngle += rotationSpeed * DELTA_SECONDS;
 	bbmod_material_reset();
 	new BBMOD_Matrix()
 		.RotateX(90)
-		.RotateY(frame)
+		.RotateY(rotationAngle)
 		.RotateZ(180)
 		.Scale(_scale, _scale, 1000)
 		.Translate(room_width / 2, room_height / 2, 0)
