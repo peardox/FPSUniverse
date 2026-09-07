@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BBMOD_StaticBatch",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BBMOD_StaticBatch",
+  "parent":{
+    "name":"Batching",
+    "path":"folders/BBMOD/Core/Batching.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

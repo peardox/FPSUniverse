@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BBMOD_ColorGradingEffect",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BBMOD_ColorGradingEffect",
+  "parent":{
+    "name":"ColorGrading",
+    "path":"folders/BBMOD/PostProcessing/ColorGrading.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

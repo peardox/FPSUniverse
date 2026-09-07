@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BBMOD_StateMachine",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BBMOD_StateMachine",
+  "parent":{
+    "name":"StateMachine",
+    "path":"folders/BBMOD/StateMachine.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

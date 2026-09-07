@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BBMOD_IDestructible",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BBMOD_IDestructible",
+  "parent":{
+    "name":"Interfaces",
+    "path":"folders/BBMOD/Core/Interfaces.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

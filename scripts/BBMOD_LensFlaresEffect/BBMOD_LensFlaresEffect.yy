@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BBMOD_LensFlaresEffect",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BBMOD_LensFlaresEffect",
+  "parent":{
+    "name":"LensFlares",
+    "path":"folders/BBMOD/PostProcessing/LensFlares.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

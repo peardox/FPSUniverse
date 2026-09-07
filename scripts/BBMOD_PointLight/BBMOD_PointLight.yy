@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BBMOD_PointLight",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BBMOD_PointLight",
+  "parent":{
+    "name":"Lights",
+    "path":"folders/BBMOD/Core/Lights.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

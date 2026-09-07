@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BBMOD_DragModule",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BBMOD_DragModule",
+  "parent":{
+    "name":"Physics",
+    "path":"folders/BBMOD/Particles/Modules/Physics.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"bbmod_cmp",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"bbmod_cmp",
+  "parent":{
+    "name":"Raycasting",
+    "path":"folders/BBMOD/Raycasting.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

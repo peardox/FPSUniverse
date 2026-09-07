@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BBMOD_SetColorModule",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BBMOD_SetColorModule",
+  "parent":{
+    "name":"SetProperty",
+    "path":"folders/BBMOD/Particles/Modules/Universal/SetProperty.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

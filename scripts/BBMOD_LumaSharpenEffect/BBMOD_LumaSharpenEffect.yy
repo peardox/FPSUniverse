@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BBMOD_LumaSharpenEffect",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BBMOD_LumaSharpenEffect",
+  "parent":{
+    "name":"LumaSharpen",
+    "path":"folders/BBMOD/PostProcessing/LumaSharpen.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

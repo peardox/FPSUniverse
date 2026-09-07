@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"BBMOD_ShCheckVTF",
+  "name":"BBMOD_ShCheckVTF",
+  "parent":{
+    "name":"VTF",
+    "path":"folders/BBMOD/VTF.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}
