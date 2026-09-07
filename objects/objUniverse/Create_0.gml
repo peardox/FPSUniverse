@@ -1,4 +1,3 @@
-enum animate { CAMERA , MODEL }
 //universe = new BBMOD_Model("Sky/Sky.bbmod");
 //universe.freeze();
 rotationAngle = 0;
@@ -10,15 +9,12 @@ camera.Fov = 30;
 camera.Up = new BBMOD_Vec3(0, 0, 1);
 camera.Position = new BBMOD_Vec3(0, 0, 0);
 camera.Target = new BBMOD_Vec3(-1, 0, -1);
-universe = BBMOD_RESOURCE_MANAGER.load("Sky/Sky.bbmod", function (_error, _model) {
-//universe = BBMOD_RESOURCE_MANAGER.load("World/World.bbmod", function (_error, _model) {
-	if (_error)
-	{
+//universe = BBMOD_RESOURCE_MANAGER.load("Sky/Sky.bbmod", function (_error, _model) {
+universe = BBMOD_RESOURCE_MANAGER.load(global.modelList[global.modelSelected], function (_error, _model) {
+	if (_error)	{
 		// TODO: Loading failed! Handle error...
 		show_message("Error loading model");
-	}
-	else
-	{
+	} else {
 		// Sanity check then Flip the texture
 		if(move == animate.MODEL) {
 			if(array_length(_model.Materials) == 1) {
