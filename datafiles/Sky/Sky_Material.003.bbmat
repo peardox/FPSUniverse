@@ -1,0 +1,44 @@
+{
+    "__MaterialName": "BBMOD_MATERIAL_DEFAULT",
+    "RenderQueue": "Default",
+    "BaseOpacityMultiplier": {
+        "Red": 255.0,
+        "Green": 255.0,
+        "Blue": 255.0,
+        "Alpha": 1.0
+    },
+    "Shaders": {
+        "Shadows": "BBMOD_SHADER_DEFAULT_DEPTH",
+        "DepthOnly": "BBMOD_SHADER_DEFAULT_DEPTH",
+        "Id": "BBMOD_SHADER_INSTANCE_ID"
+    },
+    "BlendMode": "bm_normal",
+    "Culling": "cull_noculling",
+    "ZWrite": true,
+    "ZTest": true,
+    "ZFunc": "cmpfunc_lessequal",
+    "AlphaTest": 0.9,
+    "AlphaBlend": false,
+    "Mipmapping": "mip_markedonly",
+    "MipBias": 0.0,
+    "MipFilter": "tf_anisotropic",
+    "MipMin": 0.0,
+    "MipMax": 16.0,
+    "Anisotropy": 16.0,
+    "Filtering": true,
+    "TextureOffset": {
+        "X": 0.0,
+        "Y": 0.0
+    },
+    "TextureScale": {
+        "X": 1.0,
+        "Y": 1.0
+    },
+    "ShadowmapBias": 0.0,
+    "Repeat": true,
+    "__Textures": {
+        "BaseOpacity": "./Textures/Material.003_BaseOpacity.png",
+        "NormalRoughness": "./Textures/Material.003_NormalRoughness.png",
+        "MetallicAO": "./Textures/Material.003_MetallicAO.png"
+    }
+}
