@@ -1,6 +1,11 @@
 {
   "$GMWindowsOptions":"v2",
   "%Name":"Windows",
+  "ConfigValues":{
+    "Steam":{
+      "option_windows_start_fullscreen":"false",
+    },
+  },
   "name":"Windows",
   "option_windows_allow_fullscreen_switching":true,
   "option_windows_borderless":false,

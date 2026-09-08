@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ScreenRes",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ScreenRes",
+  "parent":{
+    "name":"FPSUniverse",
+    "path":"FPSUniverse.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

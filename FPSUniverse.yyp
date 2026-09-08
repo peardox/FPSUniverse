@@ -986,6 +986,7 @@
     {"id":{"name":"InputXYNewest","path":"scripts/InputXYNewest/InputXYNewest.yy",},},
     {"id":{"name":"InputXYOldest","path":"scripts/InputXYOldest/InputXYOldest.yy",},},
     {"id":{"name":"InputY","path":"scripts/InputY/InputY.yy",},},
+    {"id":{"name":"ScreenRes","path":"scripts/ScreenRes/ScreenRes.yy",},},
     {"id":{"name":"Steamworks_Definitions","path":"scripts/Steamworks_Definitions/Steamworks_Definitions.yy",},},
     {"id":{"name":"BBMOD_ShBloomUpsample","path":"shaders/BBMOD_ShBloomUpsample/BBMOD_ShBloomUpsample.yy",},},
     {"id":{"name":"BBMOD_ShCheckMRT","path":"shaders/BBMOD_ShCheckMRT/BBMOD_ShCheckMRT.yy",},},
