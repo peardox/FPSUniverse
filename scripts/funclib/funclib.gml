@@ -31,7 +31,7 @@ function display_window() constructor {
 		room_width = self.width;
 		room_height = self.height;
 		surface_resize(application_surface, room_width, room_height);
-		display_set_gui_size(room_width, room_height);
+		display_set_gui_size(self.width, self.height);
 		
 		return true;
 	}

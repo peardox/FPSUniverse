@@ -1,0 +1,33 @@
+Write a C++ function called set_gpu_performance for Windows that manipulates the 'SOFTWARE\Microsoft\DirectX\UserGpuPreferences' HKCU key to add a REG_SZ value to the registy to enable hi-perf, normal or let windows choose for the windows graphics setting.
+The C++ function will return a bool indicating success/fail and take two arguments, a string called exename, the path of an exe and an integer called perf contining 0, 1, or 2 to indicate the setting.
+The Name of the String Value will be the exename parameter
+The Type of the String Value will be REG_SZ
+The Data of the String Value will be "GpuPreference=" followed by the integer as a string
+The function should first verify if the 'SOFTWARE\Microsoft\DirectX\UserGpuPreferences' key exists. If not the function should not proceed any further and return a value of false.
+The function should next check if the String Value exename already exists, if so it should update the Data with the passed value
+Finally if the String Value does not exist it should be added
+Any API failures should return the fail value of false
+If the value was sucessfully added/changed the function should return true
+
+A companion function is also required to query the existing value
+This function is similar but only takes an exename parameter. It returns an integer corresponding to the number at the end of the "GpuPreference=" data
+This function should also verify the existance of the 'SOFTWARE\Microsoft\DirectX\UserGpuPreferences' key. Failure here should return a -1
+Any other failure should return -2
+
+These functions should be packaged as a DLL
+
+The C++ code should build from the command line using CMake and the relevant files provided
+The CMakeLists.txt will be for CMake 4+
+build should be started as follows so make the CMakeLists.txt capable of building using only those commands
+cmake -B build
+cmake --build build --config Release
+
+Visual C++ Studio will be available but no generator (-G) should be required to be passed to CMake. It will not be build with ninja or any other non-standard tool
+
+===> Added
+get_gpu_performance and set_gpu_performance need wrapper functions. The initial functions do not need exporting but the wrappers do
+The wrapper functions are defined as follows
+double gpu_get_performance(char* exefile);
+double gpu_set_performance(char* exefile, double perf);
+
+alter the existing code to handle this change
