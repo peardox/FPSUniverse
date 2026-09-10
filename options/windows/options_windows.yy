@@ -4,6 +4,7 @@
   "ConfigValues":{
     "Steam":{
       "option_windows_start_fullscreen":"false",
+      "option_windows_executable_name":"FPSUniverse.exe",
     },
   },
   "name":"Windows",

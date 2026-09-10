@@ -7,6 +7,7 @@ yaw = 0;
 last_x = -1;
 last_y = -1;
 last_speed = 0;
-
+gpu =gpu_get_performance();
+screens = _screen_info_load();
 window_enable_borderless_fullscreen(true);
 instance_create_depth(500,500,0,objUniverse);

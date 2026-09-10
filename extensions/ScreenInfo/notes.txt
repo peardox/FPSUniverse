@@ -1,0 +1,181 @@
+The additions are scaleFactor for each screen along with the addition of rezol_ext_get_screen_info_paged and rezol_ext_get_dpi_awareness
+The changes are the sizes and data types of some screeninfo header items as well as some padding to allow for easy expansion in the future
+
+The first thing to do is to call ...
+
+=== Function ===
+rezol_ext_get_buffer_size(real which);
+
+This returns a real with the size of the buffer you need to allocate for (most) function calls. 
+The value of "which" controls which size is returned (some are optional and more informational)
+
+The possible values for which are as follows...
+
+enum REZOL_DATA_BUFFER {
+    SCREENINFOHEADER,           // Informational - Size of SCREENINFOHEADER
+	SCREENINFOHEADERRESERVED,   // Informational - Size of SCREENINFOHEADERRESERVED
+    SCREENINFO,                 // Vitally important - size of screeninfo buffer - needed to call rezol_ext_get_screen_info / rezol_ext_get_screen_info_paged
+    PHYSICALSCREEN,             // Informational - Size of one physicalscreen buffer
+    WINDOWCHROME                // Vitally important - size of windowchrome buffer - needed to call rezol_ext_get_window_chrome
+};
+
+
+=== Function ===
+rezol_ext_get_screen_info(string buf);
+
+This returns a (real) error code 0 = no error, 1 = something went wrong
+Before calling you will need to create a GMS buffer, the size of which must be whatever rezol_ext_get_buffer_size(REZOL_DATA_BUFFER.SCREENINFO) says so something like this...
+
+var _screen_info_buf_size = rezol_ext_get_buffer_size(REZOL_DATA_BUFFER.SCREENINFO);
+var _buf = buffer_create(_screen_info_buf_size, buffer_fixed, 1);
+
+When the function returns the passed buffer will contain a screeninfo structure with, by default, 8 screens worth of information. Any missing screens will be zeroed.
+
+So something like this...
+
+if(rezol_ext_get_screen_info(string(buffer_get_address(_buf))) == 0) {
+    // Copy data from _buf into some local struct. Once you're finished delete _buf.
+}
+
+The very end of the screeninfo data will contain the fourcc GMEX so as a safety test so something like this
+
+#macro MAGIC $474D4558
+if(buffer_peek(_buf, _screen_info_buf_size - 4, buffer_u32) != MAGIC) {
+    // Something REALLY bad happened - really could only be a buffer overflow (not that it can happen - well, in theory)
+}
+
+Once you've done these (optional) checks you should read in the header section of screeninfo into a local struct - see below for the definitions
+
+While you read in the header you got a value for count as the first value you recieved. This is vitally important as only that many screens have meaningful data (the rest are zeroed) so...
+
+var _count = buffer_read(_buf, buffer_s32);
+
+Will be very important in a moment. The last entry in the screeninfo header is a reserved section - currently 92 bytes but may be retrieved via rezol_ext_get_buffer_size(REZOL_DATA_BUFFER.SCREENINFOHEADERRESERVED) in case this changes
+
+This puts you at byte 128 which is where MAX_SCREENS (8) physicalscreen structures start.
+
+Something like this will therefore position you at the start of each record...
+
+var _screen_info_header_size = rezol_ext_get_buffer_size(REZOL_DATA_BUFFER.SCREENINFOHEADER);
+var _screen_info_physical_size = rezol_ext_get_buffer_size(REZOL_DATA_BUFFER.PHYSICALSCREEN);
+
+for(var _i = 0; _i < _count; _i++) {
+    buffer_seek(_buf, buffer_seek_start, _screen_info_header_size + (_screen_info_physical_size * _i));
+    // Copy data from _buf into some local array of structs.
+}
+
+Each screen starts with an errorCode (0), then refreshRate, isPrimary flag and scaleFactor. These are followed by some box, rect and size information for the screen and finish with the user friendly name of the screen which is at most MONITOR_NAME_BUFFER_SIZE-1 (63) bytes long
+See below for full details
+
+=== Function ===
+rezol_ext_get_screen_info_paged(string buf, real page);
+
+This is a paged version of rezol_ext_get_screen_info. It's use is debatable BUT it is advised to use the paged version to be sure you always have all available screens (i.e. more than 8)
+Basically you call this exactly the same way as the un-paged version BUT you add a zero-based page parameter.
+If the "more" value in the header is non-zero (i.e. True) then there are more monitors so you should call it again with an increasing page parameter until more is zero (False)
+
+There is no real exuse to not using this version (apart from the logic every so slightly more complicated)
+
+=== Function ===
+rezol_ext_get_window_chrome(string buf, string handle);
+
+Gets the size of the Window's Chrome (stupid Google have a lot to answer for calling their browser Chrome...)
+
+var _screen_chrome_buf_size = rezol_ext_get_buffer_size(REZOL_DATA_BUFFER.WINDOWCHROME);
+var _buf = buffer_create(_screen_chrome_buf_size, buffer_fixed, 1);
+if(rezol_ext_get_window_chrome(string(buffer_get_address(_buf)), string(window_handle())) == 0) {
+    // Process _buf
+}
+
+As with the screen_info this has a fourcc for error-checking purposes the data is, however, really simple just being two rects.
+
+Still - be safe and check with...
+
+if(buffer_peek(_buf, _screen_chrome_buf_size - 4, buffer_u32) == MAGIC) {
+    // Copy buffer data
+}
+
+The inner rect is the size of the Window (which happens to be the same as GMS's idea of a Window)
+The other rect includes any extra system-based decorations. These are the borders and title bar of the application.
+This function MAY change in the future although any changes would be additional to that already provided
+
+
+=== Function ===
+rezol_ext_get_dpi_awareness();
+=== WINDOWS ONLY
+
+Super simple - just call it and the returned real is one of
+
+enum DPI_AWARENESS {
+  DPI_AWARENESS_INVALID = -1,
+  DPI_AWARENESS_UNAWARE = 0,
+  DPI_AWARENESS_SYSTEM_AWARE = 1,
+  DPI_AWARENESS_PER_MONITOR_AWARE = 2
+};
+
+
+Data structures
+---------------
+
+constexpr int     MAX_SCREENS = 8;
+constexpr uint8_t GMSVersionMajor = 0;
+constexpr uint8_t GMSVersionMinor = 1;
+constexpr uint8_t GMSVersionBuild = 1;
+constexpr uint32_t GMEX = 0x474D4558; // "GMEX"
+constexpr size_t MONITOR_NAME_BUFFER_SIZE = 64;
+constexpr size_t EXPANSION_SPACE = 92; // Pad ScreenInfoHeader to 128 bytes
+
+struct GMSRect {
+    int32_t left;
+    int32_t top;
+    int32_t right;
+    int32_t bottom;
+};
+
+struct GMSBox {
+    int32_t width;
+    int32_t height;
+};
+
+struct PhysicalSize {
+    int32_t width;
+    int32_t height;
+    int32_t diagonal;
+};
+
+struct screeninfoheader = {
+    int32_t count;
+    int32_t maxCount;
+    int32_t fromScreen;
+    int32_t pageNum;
+    int32_t autoHideTaskbar;
+    int32_t more;
+    int32_t versionMajor;
+    int32_t versionMinor;
+    int32_t versionBuild;
+    char    reserved[EXPANSION_SPACE];
+}
+
+struct physicalscreen = {
+    int32_t         errorCode;
+    int32_t         refreshRate;
+    int32_t         isPrimary;
+    int32_t         scaleFactor;
+    GMSBox          pixelBox;
+    GMSRect         virtualRect;
+    GMSRect         workingRect;
+    PhysicalSize    physSize;
+	char   			name[MONITOR_NAME_BUFFER_SIZE];
+}
+    
+struct screeninfo = {
+    screeninfoheader header;
+    physicalscreen   screen[MAX_SCREENS];
+    uint32_t         fourcc; // GMEX / $474D4558
+}
+
+struct WindowChrome {
+    GMSRect  outerRect;
+    GMSRect  innerRect;
+    uint32_t fourcc; // GMEX / $474D4558
+};

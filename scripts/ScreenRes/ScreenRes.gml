@@ -5,7 +5,7 @@ global.primeList = [
 global.primeCount = array_length(global.primeList);
 global.maxPrimeFactorList = 6;
 
-// pfp - primeFactorPower
+// basePower
 function basePower(_base, _power) constructor {
 	self.base = _base;
 	self.power = _power;
@@ -109,7 +109,7 @@ function lcf(_v) {
 	show_debug_message("======> LCF = " + string(_res));
 	return _res;
 }
-
+/*
 var _sw = 1920;
 var _sh = 1200;
 
@@ -131,7 +131,7 @@ for(var _i=1; _i<= _lcf; _i++) {
 	}
 }
 
-/*
+
 primeFactorize(101);
 primeFactorize(1920);
 primeFactorize(1080);

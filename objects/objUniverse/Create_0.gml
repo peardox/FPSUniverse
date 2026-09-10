@@ -2,7 +2,7 @@
 //universe.freeze();
 rotationAngle = 0;
 move = animate.CAMERA; // MODEL; //CAMERA;
-var _secondsPerRotation = 12;
+var _secondsPerRotation = 8;
 rotationSpeed = 360 / _secondsPerRotation;
 camera = new BBMOD_BaseCamera();
 camera.Fov = 30;

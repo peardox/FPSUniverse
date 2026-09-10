@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Screen_Info",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Screen_Info",
+  "parent":{
+    "name":"ScreenInfo",
+    "path":"folders/ScreenInfo.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

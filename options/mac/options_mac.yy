@@ -1,6 +1,12 @@
 {
   "$GMMacOptions":"",
   "%Name":"macOS",
+  "ConfigValues":{
+    "Steam":{
+      "option_mac_build_number":"2",
+      "option_mac_version":"1.0.1",
+    },
+  },
   "name":"macOS",
   "option_mac_allow_fullscreen":true,
   "option_mac_allow_incoming_network":false,

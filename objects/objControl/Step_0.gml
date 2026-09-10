@@ -3,6 +3,15 @@ if(freq != display_get_frequency()) {
 	game_set_speed(freq, gamespeed_fps);
 }
 
+
+if (keyboard_check_pressed(vk_f5)) {
+	gpu_set_performance(GPU_PERFORMANCE.LOW_POWER);
+}
+
+if (keyboard_check_pressed(vk_f6)) {
+	gpu_set_performance(GPU_PERFORMANCE.HIGH_POWER);
+}
+
 if (keyboard_check_pressed(vk_f11)) {
 	global.modelSelected++;
 	if(global.modelSelected >= array_length(global.modelList)) {
