@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"funclib",
+  "%Name":"UILib",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"funclib",
+  "name":"UILib",
   "parent":{
     "name":"FPSUniverse",
     "path":"FPSUniverse.yyp",

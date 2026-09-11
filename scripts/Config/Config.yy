@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Config",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Config",
+  "parent":{
+    "name":"FPSUniverse",
+    "path":"FPSUniverse.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

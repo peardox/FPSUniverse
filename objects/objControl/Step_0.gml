@@ -20,8 +20,8 @@ if (keyboard_check_pressed(vk_f11)) {
 	room_restart();
 }
 
-if (keyboard_check_pressed(vk_f12)) {
-	fullScreenState := !fullScreenState;
+if(InputPressed(INPUT_VERB.SPECIAL)) {
+ 	fullScreenState := !fullScreenState;
 	if(fullScreenState) {
 		last_x = window_get_x();
 		last_y = window_get_y();
