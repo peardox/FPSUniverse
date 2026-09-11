@@ -48,14 +48,14 @@ if(InputPressed(INPUT_VERB.ACCEPT)) {
 	}
 }
 
-if(InputPressed(INPUT_VERB.UP)) {
+if(InputCheck(INPUT_VERB.UP)) {
 	yaw += 0.01;
 	if(yaw > 1) {
 		yaw = 1;
 	}
 }
 
-if(InputPressed(INPUT_VERB.DOWN)) {
+if(InputCheck(INPUT_VERB.DOWN)) {
 	yaw -= 0.01;
 	if(yaw < -1) {
 		yaw = -1;
