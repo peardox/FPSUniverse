@@ -12,7 +12,7 @@ if (keyboard_check_pressed(vk_f6)) {
 	gpu_set_performance(GPU_PERFORMANCE.HIGH_POWER);
 }
 
-if (keyboard_check_pressed(vk_f11)) {
+if(InputPressed(INPUT_VERB.ACTION)) {
 	global.modelSelected++;
 	if(global.modelSelected >= array_length(global.modelList)) {
 		global.modelSelected = 0;
@@ -34,11 +34,11 @@ if(InputPressed(INPUT_VERB.SPECIAL)) {
 	}
 }
 
-if (keyboard_check_pressed(vk_escape)) {
+if(InputPressed(INPUT_VERB.EXIT)) {
 	game_end();
 }
 
-if (keyboard_check_pressed(vk_space)) {
+if(InputPressed(INPUT_VERB.ACCEPT)) {
 	if(objUniverse.rotationSpeed == 0) {
 		objUniverse.rotationSpeed = last_speed;
 		last_speed = 0;
@@ -48,14 +48,14 @@ if (keyboard_check_pressed(vk_space)) {
 	}
 }
 
-if (keyboard_check(vk_up)) {
+if(InputPressed(INPUT_VERB.UP)) {
 	yaw += 0.01;
 	if(yaw > 1) {
 		yaw = 1;
 	}
 }
 
-if (keyboard_check(vk_down)) {
+if(InputPressed(INPUT_VERB.DOWN)) {
 	yaw -= 0.01;
 	if(yaw < -1) {
 		yaw = -1;
