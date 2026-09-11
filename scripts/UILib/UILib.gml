@@ -77,7 +77,7 @@ function DynamicFont(_name, _from = 20, _to = 126) constructor {
 		var _loop = 0;
 		do {
 			_loop++;
-show_debug_message("Test #" + string(_loop) + " size = " + string(_test));
+			// show_debug_message("Test #" + string(_loop) + " size = " + string(_test));
 			if(_test <= 8) {
 				break;
 			}
@@ -115,7 +115,7 @@ function display_window() constructor {
 	height = -1;
 	isFullscreen = false;
 	font = undefined;
-	rows = 0;
+	lines = 0;
 	
 	static update = function() {
 		if( (self.width == window_get_width()) &&
@@ -149,8 +149,8 @@ function display_window() constructor {
 
 		if(!is_undefined(self.font)) {
 			if(self.font.exists()) {
-				if(self.rows > 0) {
-					self.font.find_size(32, self.height);
+				if(self.lines > 0) {
+					self.font.find_size(self.lines, self.height);
 				}
 			}
 		}
@@ -164,8 +164,8 @@ function display_window() constructor {
 		self.font = _font;
 	}
 	
-	static set_rows = function(_rows) {
-		self.rows = _rows;
+	static set_lines = function(_lines) {
+		self.lines = _lines;
 	}
 
 }

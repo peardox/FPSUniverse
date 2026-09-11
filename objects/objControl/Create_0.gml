@@ -5,7 +5,7 @@ fnt = new DynamicFont("Roboto-Regular.ttf");
 fnt.create();
 wind = new display_window();
 wind.set_font(fnt);
-wind.set_rows(32);
+wind.set_lines(32);
 wind.set_size();
 
 upcount = 0;
