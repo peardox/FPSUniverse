@@ -79,6 +79,7 @@ extern "C" {
     typedef struct {
         int32_t         errorCode;
         int32_t         refreshRate;
+        int32_t         bitsPerPixel;
         int32_t         isPrimary;
         int32_t         scaleFactor;
         GMSBox          pixelBox;

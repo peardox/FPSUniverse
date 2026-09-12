@@ -1,4 +1,4 @@
-function DynamicFont(_name, _from = 20, _to = 126) constructor {
+function Font(_name, _from = 20, _to = 126) constructor {
 	name = _name;
 	bold = false;
 	italic = false;
@@ -11,6 +11,7 @@ function DynamicFont(_name, _from = 20, _to = 126) constructor {
 	max_char_width = 0;
 	__timer = 0;
 	time = 0;
+	finder = 0;
 	
 	static activate = function() {
 		if(!font_exists(self.font)) {
@@ -72,32 +73,33 @@ function DynamicFont(_name, _from = 20, _to = 126) constructor {
 	}
 
 	static find_size = function(_lines, _height) {
-		var _test = floor(_height / _lines);
+		var _find_timer = get_timer();
+		var _target = floor(_height / _lines); // 21.3
+		var _test = _target;
 		var _finished = false;
 		var _loop = 0;
 		do {
 			_loop++;
-			// show_debug_message("Test #" + string(_loop) + " size = " + string(_test));
 			if(_test <= 8) {
 				break;
 			}
 			self.size = _test;
 			self.create();
 			self.get_info();
-			if((self.max_char_height * _lines) > _height) {
+			if(self.max_char_height < _target) {
+				show_debug_message("Char+ " + string(self.max_char_height) + ", " + string(_test) + ", " + string(_target));
+				_test++;
+			} else if(self.max_char_height > _target) {
+				show_debug_message("Char- " + string(self.max_char_height) + ", " + string(_test) + ", " + string(_target));
 				_test--;
 			} else {
-				var _diff = _height - (self.max_char_height * _lines);
-				if(_diff > self.max_char_height) {
-					_test++;
-				} else {
-					_finished = true;
-				}
+				show_debug_message("Char= " + string(self.max_char_height) + ", " + string(_test) + ", " + string(_target));
+				_finished = true;
 			}
 
 		} until(_finished || (_loop > 100));	
 		
-		
+		self.finder = get_timer() - _find_timer;		
 		
 	}
 	

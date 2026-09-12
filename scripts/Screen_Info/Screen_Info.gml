@@ -51,54 +51,20 @@ function bsearch(_array, _value, _compare) {
     return -1;
 }
 
-function display_variant(_obj = undefined) constructor {
-    self.freq = 0;
-    self.bpp = 0;
-    
-    if(!is_undefined(_obj)) {
-        self.freq = _obj.freq;
-        self.bpp = _obj.bpp;
-    }
-}
-
 function display_res(_obj = undefined) constructor {
     self.width = 0;
     self.height = 0;
-    self.variants = array_create(0);
     
     if(!is_undefined(_obj)) {
         self.width = _obj.width;
         self.height = _obj.height;
     }
     
-    static _variant_compare = function(_current, _next) { // current, next
-        if(_current.freq < _next.freq) 
-            return -1;
-        if(_current.freq > _next.freq) 
-            return 1;
-        // Freq is equal, sort bpp
-        if(_current.bpp < _next.bpp) 
-            return -1;
-        if(_current.bpp > _next.bpp) 
-            return 1;
-        // Freq + Bpp are equal
-        return 0;
-    }
-    
-    static add_variant = function(_obj) {
-        var _next = array_length(self.variants);
-        array_resize(self.variants, _next + 1);
-        self.variants[_next] = new display_variant(_obj);
-        if((_next > 0) && (_variant_compare(self.variants[_next-1], self.variants[_next]) > 0)) {
-            array_sort(self.variants, _variant_compare);
-        }
-    }
 }
 
 function display_modes() constructor {
     self.res = array_create(0);
-    self.tail = 0;
-    self.sortCount = 0;
+    self.count = 0;
 
     static _resolution_compare = function(_current, _next) { // current, next
         if(_current.width < _next.width)
@@ -119,18 +85,16 @@ function display_modes() constructor {
         
         if(_this == -1) {
             var _next = array_length(self.res);
-            self.tail = _next;
+            self.count = _next;
             array_resize(self.res, _next + 1);
             self.res[_next] = new display_res(_obj);
-            self.res[_next].add_variant(_obj);
             // Does the array need sorting?
             if((_next > 0) && (_resolution_compare(self.res[_next-1], self.res[_next]) > 0)) {
                 array_sort(self.res, _resolution_compare);
-                self.sortCount++;
             }
             
         } else {
-            self.res[_this].add_variant(_obj);
+            show_debug_message("Sort failed");
         }
     }
 }
@@ -192,6 +156,7 @@ function screen_info_physical(_width, _height, _diagonal) : screen_info_box(_wid
 function screen_info_screen() constructor {
 	self.error    = 0;
 	self.refresh  = 0;
+	self.bpp  = 0;
 	self.primary  = false;
 	self.scaleFactor = -1;
 	self.virtual  = undefined;
@@ -228,6 +193,10 @@ function screen_info_screen() constructor {
 	
 	static set_refresh = function(_refresh) {
 		self.refresh  = real(_refresh);
+	}
+	
+	static set_bpp= function(_bpp) {
+		self.bpp      = real(_bpp);
 	}
 	
 	static set_primary = function(_primary) {
@@ -499,6 +468,7 @@ function __screen_info_create_fallback_data() {
     var _scr = _inf.add_screen();
     _scr.set_error(0);
     _scr.set_refresh(game_get_speed(gamespeed_fps));
+	_scr.set_bpp(32);
     _scr.set_primary(1);
     _scr.set_scaleFactor(100);
     _scr.add_box(display_get_width(), display_get_height());
@@ -513,7 +483,7 @@ function __screen_info_create_fallback_data() {
     return _inf;
 }
 
-function __screen_info_read_resolution_data(_dev) {
+function __screen_info_read_resolution_data(_dev, _refresh, _bpp) {
     var _modes = undefined;
 	var _res_info_buf_size = __screen_info_get_buffer_size(SCREEN_INFO_DATA_BUFFER.RESOLUTIONINFO);
 	var _res_info_header_size = __screen_info_get_buffer_size(SCREEN_INFO_DATA_BUFFER.RESOLUTIONHEADER);
@@ -543,7 +513,9 @@ function __screen_info_read_resolution_data(_dev) {
                             _res_height = buffer_read(_buf, buffer_s32);
                             _res_refresh = buffer_read(_buf, buffer_s32);
                             _res_bpp = buffer_read(_buf, buffer_s32);
-                            _modes.add({width: _res_width, height: _res_height, freq: _res_refresh, bpp: _res_bpp});
+							if((_res_refresh == _refresh) && (_res_bpp = _bpp)) {
+								_modes.add({width: _res_width, height: _res_height, freq: _res_refresh, bpp: _res_bpp});
+							}
                         }
                     }
 					_page++;
@@ -612,6 +584,7 @@ function __screen_info_read_screen_data() {
 								var _scr = _inf.add_screen();
 								_scr.set_error(buffer_read(_buf, buffer_s32));
 								_scr.set_refresh(buffer_read(_buf, buffer_s32));
+								_scr.set_bpp(buffer_read(_buf, buffer_s32));
 								_scr.set_primary(buffer_read(_buf, buffer_s32));
 								_scr.set_scaleFactor(buffer_read(_buf, buffer_s32));
 								_a1 = buffer_read(_buf, buffer_s32);
@@ -636,7 +609,7 @@ function __screen_info_read_screen_data() {
 								_scr.set_description(buffer_read(_buf, buffer_string));
 								buffer_seek(_buf, buffer_seek_start, _bpos + _screen_info_physical_name);
 								_scr.set_device(buffer_read(_buf, buffer_string));
-                                _scr.set_modes(__screen_info_read_resolution_data(_scr.device));
+                                _scr.set_modes(__screen_info_read_resolution_data(_scr.device, _scr.refresh, _scr.bpp ));
 							}
 						}
 						_page++;

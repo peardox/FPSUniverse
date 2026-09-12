@@ -1,5 +1,4 @@
 fnt.activate();
-
 if(fullui) {
 	draw_text(20, fnt.get_height() *  0,"FPS = " + string(fps) + " / " + string(fps_real) + ", build = " + string(global.__build_id));
 } else {
@@ -28,7 +27,7 @@ draw_text(20, fnt.get_height() * 23,"Font Size : " + string(fnt.size));
 draw_text(20, fnt.get_height() * 24,"Font Height : " + string(fnt.max_char_height));
 draw_text(20, fnt.get_height() * 25,"ABC Height  :" + string(string_height("ABC")) );
 draw_text(20, fnt.get_height() * 26,"Height of " + string(wind.lines) + " = " + string(wind.lines * fnt.max_char_height));
-draw_text(20, fnt.get_height() * 27,"   27");
+draw_text(20, fnt.get_height() * 27,"Finder : " + string(fnt.finder));
 draw_text(20, fnt.get_height() * 28,"   28");
 draw_text(20, fnt.get_height() * 29,"   29");
 draw_text(20, fnt.get_height() * 30,"   30");

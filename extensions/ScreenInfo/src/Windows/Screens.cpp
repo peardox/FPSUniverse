@@ -194,7 +194,8 @@ static BOOL CALLBACK MonitorEnum(
                                   &devMode, 0)) {
             info->screen[screen_index].pixelBox.width   = devMode.dmPelsWidth;
             info->screen[screen_index].pixelBox.height  = devMode.dmPelsHeight;
-            info->screen[screen_index].refreshRate       = devMode.dmDisplayFrequency;
+            info->screen[screen_index].refreshRate      = devMode.dmDisplayFrequency;
+			info->screen[screen_index].bitsPerPixel     = devMode.dmBitsPerPel;
 
             // --- Get physical dimensions (mm) using GetDeviceCaps ---
             HDC hdc = CreateDC(monitorInfo.szDevice, nullptr, nullptr, nullptr);
@@ -216,6 +217,7 @@ static BOOL CALLBACK MonitorEnum(
             info->screen[screen_index].errorCode |= 2;
             info->screen[screen_index].pixelBox = { 0,0 };
             info->screen[screen_index].refreshRate = 0;
+			info->screen[screen_index].bitsPerPixel = 0;
         }
         
     } else {
@@ -312,6 +314,7 @@ double get_screen_info(char* inbuf, uint32_t pageNum) {
         for(int i = 0; i < info.header.count; i++) {
             buf = GMSWrite(buf, info.screen[i].errorCode);
             buf = GMSWrite(buf, info.screen[i].refreshRate);
+            buf = GMSWrite(buf, info.screen[i].bitsPerPixel);
             buf = GMSWrite(buf, info.screen[i].isPrimary);
             buf = GMSWrite(buf, info.screen[i].scaleFactor);
 

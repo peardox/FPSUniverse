@@ -9,7 +9,7 @@ global.modelList = [
 	"World/World.bbmod"
 	];
 
-global.__build_id = 2;
+global.__build_id = 3;
 
 
 
