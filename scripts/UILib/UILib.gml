@@ -74,32 +74,45 @@ function Font(_name, _from = 20, _to = 126) constructor {
 
 	static find_size = function(_lines, _height) {
 		var _find_timer = get_timer();
-		var _target = floor(_height / _lines); // 21.3
-		var _test = _target;
+		var _target = floor(_height / _lines);
+		show_debug_message("\nTarget = " + string(_target));
+		var _test = round(_target / 1.46);
 		var _finished = false;
 		var _loop = 0;
+		var _margin_of_error = 0;
+		var _margin_step = 1;
+		var _checked = array_create(0);
 		do {
-			_loop++;
-			if(_test <= 8) {
+			if(_test <= 1) {
 				break;
 			}
 			self.size = _test;
 			self.create();
 			self.get_info();
-			if(self.max_char_height < _target) {
-				show_debug_message("Char+ " + string(self.max_char_height) + ", " + string(_test) + ", " + string(_target));
-				_test++;
-			} else if(self.max_char_height > _target) {
-				show_debug_message("Char- " + string(self.max_char_height) + ", " + string(_test) + ", " + string(_target));
-				_test--;
+			_margin_of_error = self.max_char_height - _target;
+			if(array_contains(_checked, _test)) {
+				_margin_step /= 2;
 			} else {
-				show_debug_message("Char= " + string(self.max_char_height) + ", " + string(_test) + ", " + string(_target));
+				array_push(_checked, _test);
+			}
+			
+			if(_margin_of_error > 0) {
+				 show_debug_message("Char+ " + string(self.max_char_height) + ", " + string(_test) + ", " + string(_margin_of_error) + ", " + string(_margin_step));
+				_test -= _margin_step;
+			} else if(_margin_of_error < 0) {
+				 show_debug_message("Char- " + string(self.max_char_height) + ", " + string(_test) + ", " + string(_margin_of_error) + ", " + string(_margin_step));
+				_test += _margin_step;
+			} else {
+				 show_debug_message("Char= " + string(self.max_char_height) + ", " + string(_test) + ", " + string(_margin_of_error) + ", " + string(_margin_step));
 				_finished = true;
 			}
 
+			_loop++;
 		} until(_finished || (_loop > 100));	
 		
 		self.finder = get_timer() - _find_timer;		
+		
+		return _height - (_lines * self.max_char_height);
 		
 	}
 	
@@ -118,6 +131,7 @@ function display_window() constructor {
 	isFullscreen = false;
 	font = undefined;
 	lines = 0;
+	spare = 0;
 	
 	static update = function() {
 		if( (self.width == window_get_width()) &&
@@ -152,7 +166,7 @@ function display_window() constructor {
 		if(!is_undefined(self.font)) {
 			if(self.font.exists()) {
 				if(self.lines > 0) {
-					self.font.find_size(self.lines, self.height);
+					self.spare = self.font.find_size(self.lines, self.height);
 				}
 			}
 		}
