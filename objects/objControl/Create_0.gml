@@ -29,7 +29,7 @@ last_x = window_get_x();
 last_y = window_get_y();
 
 last_speed = 0;
-gpu =gpu_get_performance();
+gpu = gpu_get_performance();
 screens = _screen_info_load();
 show_debug_message(json_stringify(screens, true));
 window_enable_borderless_fullscreen(true);
