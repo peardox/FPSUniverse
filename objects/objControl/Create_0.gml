@@ -11,6 +11,8 @@ switch(os_type) {
 		os = "Linux";
 		break;
 }
+os = os + " Steam Input";
+
 freq = 0;
 fullScreenState := true;
 fullui = true;
