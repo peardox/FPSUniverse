@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"InputProxy",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"InputProxy",
+  "parent":{
+    "name":"Steam",
+    "path":"folders/Steam.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
