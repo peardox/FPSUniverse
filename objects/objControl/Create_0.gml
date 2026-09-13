@@ -1,4 +1,16 @@
 // show_debug_overlay(true);
+os = "Unknown";
+switch(os_type) {
+	case os_windows:
+		os = "Windows";
+		break;
+	case os_macosx:
+		os = "Mac";
+		break;
+	case os_linux:
+		os = "Linux";
+		break;
+}
 freq = 0;
 fullScreenState := true;
 fullui = true;

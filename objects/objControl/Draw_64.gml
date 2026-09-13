@@ -1,8 +1,8 @@
 fnt.activate();
 if(fullui) {
-	draw_text(20, fnt.get_height() *  0,"FPS = " + string(fps) + " / " + string(fps_real) + ", build = " + string(global.__build_id));
+	draw_text(20, fnt.get_height() *  0,"FPS = " + string(fps) + " / " + string(fps_real) + ", Build = " + string(global.__build_id) + ", OS = " + os);
 } else {
-	draw_text(20, fnt.get_height() *  0,"FPS = " + string(fps) + " / " +  string(display_get_frequency()) + " / " + string(fps_real) + ", build = " + string(global.__build_id));
+	draw_text(20, fnt.get_height() *  0,"FPS = " + string(fps) + " / " +  string(display_get_frequency()) + " / " + string(fps_real) + ", build = " + string(global.__build_id) + ", OS = " + os);
 	exit;
 }
 

@@ -467,7 +467,7 @@ function __screen_info_create_fallback_data() {
     _inf.autoHide = 0;
     var _scr = _inf.add_screen();
     _scr.set_error(0);
-    _scr.set_refresh(game_get_speed(gamespeed_fps));
+    _scr.set_refresh(display_get_frequency());
 	_scr.set_bpp(32);
     _scr.set_primary(1);
     _scr.set_scaleFactor(100);
@@ -475,7 +475,7 @@ function __screen_info_create_fallback_data() {
     _scr.add_virtual(0, 0, display_get_width(), display_get_height());
     _scr.add_working(0, 0, window_get_width(), window_get_height());
     _scr.add_physical(597, 336, 685);
-    _scr.set_description("Dummy 27\" monitor");
+    _scr.set_description("Unknown Monitor");
     _inf.dpi_aware = 0;
     _inf.fallback = true;
     _inf.callTime = 0;

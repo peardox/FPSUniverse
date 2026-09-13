@@ -1,6 +1,13 @@
 {
   "$GMLinuxOptions":"",
   "%Name":"Linux",
+  "ConfigValues":{
+    "Steam":{
+      "option_linux_scale":"1",
+      "option_linux_resize_window":"true",
+      "option_linux_allow_fullscreen":"true",
+    },
+  },
   "name":"Linux",
   "option_linux_allow_fullscreen":false,
   "option_linux_disable_sandbox":false,
